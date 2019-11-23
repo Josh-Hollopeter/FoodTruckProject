@@ -50,13 +50,7 @@ public class FoodTruckApp {
 					continue;
 				case 4:
 					break;
-				case 5:
-					for (FoodTruck foodTruck : truckArr) {
-						if(foodTruck != null) {
-							System.out.println(foodTruck.getTruckid());
-						}
-						
-					}
+
 			}
 			break;
 		}
