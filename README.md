@@ -25,4 +25,4 @@
 * Static vs Non-Static
 
 ### Lessons Learned
-* The String pool works funny with objects.
+* Don't forget to reset variable size.

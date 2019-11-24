@@ -15,12 +15,12 @@ public class FoodTruckApp {
 		FoodTruck[] truckArr = new FoodTruck[5];
 
 		int rating = 0;
-		int count = 0;
-		while (!userInput.equals("quit") && !(count >= 5)) {
+		int numTrucksInputCount = 0;
+		while (!userInput.equals("quit") && !(numTrucksInputCount >= 5)) {
 			System.out.println("Please input truck name");
 			userInput = input.nextLine();
 			
-			if (userInput.equalsIgnoreCase("quit") && count == 0) {
+			if (userInput.equalsIgnoreCase("quit") && numTrucksInputCount == 0) {
 				System.out.println(" You've entered 0 trucks: Goodbye");
 				continue;
 			} else if (userInput.equalsIgnoreCase("quit")) {
@@ -35,11 +35,11 @@ public class FoodTruckApp {
 				rating = 0;
 			}
 			input.nextLine();
-			truckArr[count] = new FoodTruck(userInput, rating);
+			truckArr[numTrucksInputCount] = new FoodTruck(userInput, rating);
 
-			count++;
+			numTrucksInputCount++;
 		}
-		while (true) {
+		while (true && numTrucksInputCount > 0) {
 			System.out.println("Please select an option");
 			System.out.println("# 1: List all existing food trucks");
 			System.out.println("# 2: See the average rating of food trucks");
@@ -94,9 +94,10 @@ public class FoodTruckApp {
 	public FoodTruck bestRating(FoodTruck[] truckArr) {
 		int biggest = truckArr[0].getRating();
 		FoodTruck result = truckArr[0];
-		for (int i = 0; i < truckArr.length; i++) {
+		for (int i = 1; i < truckArr.length; i++) {
 			if (truckArr[i] != null && truckArr[i].getRating() > biggest) {
 				result = truckArr[i];
+				biggest = truckArr[i].getRating();
 			}
 		}
 		return result;

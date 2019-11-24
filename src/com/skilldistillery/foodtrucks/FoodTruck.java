@@ -48,7 +48,7 @@ public class FoodTruck {
 	}
 
 	public int getRating() {
-		return rating;
+		return this.rating;
 	}
 
 	public void setRating(int rating) {
