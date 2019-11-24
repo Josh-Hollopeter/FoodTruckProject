@@ -18,15 +18,23 @@ public class FoodTruckApp {
 		int count = 0;
 		while (!userInput.equals("quit") && !(count >= 5)) {
 			System.out.println("Please input truck name");
-			userInput = input.next();
+			userInput = input.nextLine();
+			
 			if (userInput.equalsIgnoreCase("quit") && count == 0) {
-				System.out.println("Goodbye");
+				System.out.println(" You've entered 0 trucks: Goodbye");
 				continue;
 			} else if (userInput.equalsIgnoreCase("quit")) {
 				continue;
 			}
-			System.out.println("Now enter the trucks rating");
+			System.out.println("Now enter the trucks rating between 1-5:");
 			rating = input.nextInt();
+			if(rating > 5) {
+				rating = 5;
+			}
+			else if(rating < 0) {
+				rating = 0;
+			}
+			input.nextLine();
 			truckArr[count] = new FoodTruck(userInput, rating);
 
 			count++;
@@ -46,11 +54,13 @@ public class FoodTruckApp {
 					System.out.println(getAverageRating(truckArr));
 					continue;
 				case 3:
-					System.out.println(bestRating(truckArr));
+					System.out.println(bestRating(truckArr).toString());
 					continue;
 				case 4:
+					System.out.println("Have a good day ... exiting program");
 					break;
-
+				default:
+					continue;
 			}
 			break;
 		}
@@ -58,7 +68,7 @@ public class FoodTruckApp {
 
 	}
 
-	public double getAverageRating(FoodTruck[] truckArr) {
+	public String getAverageRating(FoodTruck[] truckArr) {
 		double avg = 0;
 		int count = 0;
 		for (FoodTruck foodTruck : truckArr) {
@@ -68,7 +78,7 @@ public class FoodTruckApp {
 			}
 
 		}
-		return avg / count;
+		return "The average rating is: " + avg / count;
 
 	}
 
@@ -81,12 +91,12 @@ public class FoodTruckApp {
 
 	}
 
-	public String bestRating(FoodTruck[] truckArr) {
+	public FoodTruck bestRating(FoodTruck[] truckArr) {
 		int biggest = truckArr[0].getRating();
-		String result = "";
+		FoodTruck result = truckArr[0];
 		for (int i = 0; i < truckArr.length; i++) {
-			if (truckArr[i] != null && truckArr[i].getRating() >= biggest) {
-				result = truckArr[i].toString();
+			if (truckArr[i] != null && truckArr[i].getRating() > biggest) {
+				result = truckArr[i];
 			}
 		}
 		return result;

@@ -6,6 +6,18 @@ public class FoodTruck {
 	private int rating;
 	private int truckid = 0;
 
+	public FoodTruck(String name, int rating) {
+		this.name = name;
+		this.rating = rating;
+		this.truckid = id;
+		id++;
+
+	}
+
+	public FoodTruck() {
+
+	}
+
 	public int getTruckid() {
 		return truckid;
 	}
@@ -14,26 +26,13 @@ public class FoodTruck {
 		this.truckid = truckid;
 	}
 
-	public FoodTruck(String name, int rating) {
-		this.name = name;
-		this.rating = rating;
-		this.truckid = id;
-		id++;
-		
-
-	}
-
-	public FoodTruck() {
-
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	@Override
 	public String toString() {
-		return "FoodTruck [name=" + name + ", rating=" + rating + "]";
+		return "FoodTruck [name=" + name + ", rating=" + rating + ", truckid=" + truckid + "]";
 	}
 
 	public void setId(int id) {
