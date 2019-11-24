@@ -17,9 +17,9 @@ public class FoodTruckApp {
 		int rating = 0;
 		int numTrucksInputCount = 0;
 		while (!userInput.equals("quit") && !(numTrucksInputCount >= 5)) {
-			System.out.println("Please input truck name");
+			System.out.println("Please input truck name or quit to exit");
 			userInput = input.nextLine();
-			
+
 			if (userInput.equalsIgnoreCase("quit") && numTrucksInputCount == 0) {
 				System.out.println(" You've entered 0 trucks: Goodbye");
 				continue;
@@ -28,10 +28,9 @@ public class FoodTruckApp {
 			}
 			System.out.println("Now enter the trucks rating between 1-5:");
 			rating = input.nextInt();
-			if(rating > 5) {
+			if (rating > 5) {
 				rating = 5;
-			}
-			else if(rating < 0) {
+			} else if (rating < 0) {
 				rating = 0;
 			}
 			input.nextLine();
