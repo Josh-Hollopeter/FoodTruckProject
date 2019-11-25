@@ -26,6 +26,8 @@ public class FoodTruckApp {
 			} else if (userInput.equalsIgnoreCase("quit")) {
 				continue;
 			}
+			System.out.println("Enter the type of cusine");
+			String foodType = input.nextLine();
 			System.out.println("Now enter the trucks rating between 1-5:");
 			rating = input.nextInt();
 			if (rating > 5) {
@@ -34,7 +36,7 @@ public class FoodTruckApp {
 				rating = 0;
 			}
 			input.nextLine();
-			truckArr[numTrucksInputCount] = new FoodTruck(userInput, rating);
+			truckArr[numTrucksInputCount] = new FoodTruck(userInput, rating, foodType);
 
 			numTrucksInputCount++;
 		}
@@ -50,7 +52,7 @@ public class FoodTruckApp {
 					listTrucks(truckArr);
 					continue;
 				case 2:
-					System.out.println(getAverageRating(truckArr));
+					System.out.printf("%.2f\n", getAverageRating(truckArr));
 					continue;
 				case 3:
 					System.out.println(bestRating(truckArr).toString());
@@ -67,7 +69,7 @@ public class FoodTruckApp {
 
 	}
 
-	public String getAverageRating(FoodTruck[] truckArr) {
+	public double getAverageRating(FoodTruck[] truckArr) {
 		double avg = 0;
 		int count = 0;
 		for (FoodTruck foodTruck : truckArr) {
@@ -77,7 +79,7 @@ public class FoodTruckApp {
 			}
 
 		}
-		return "The average rating is: " + avg / count;
+		return avg / count;
 
 	}
 
